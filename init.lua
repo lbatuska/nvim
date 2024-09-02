@@ -7,6 +7,10 @@ if vim.g.neovide == true then
   vim.g.neovide_hide_mouse_when_typing = true
 end
 
+if vim.fn.has("win64") == 1 or vim.fn.has("win32") == 1 or vim.fn.has("win16") == 1 then
+  require("nvim-treesitter.install").prefer_git = false
+end
+
 local lspconfig = require("lspconfig")
 lspconfig.clangd.setup({
   cmd = { "/usr/sbin/clangd" },
