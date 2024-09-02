@@ -19,7 +19,7 @@ lspconfig.clangd.setup({
 local mason_lspconfig = require("mason-lspconfig")
 
 mason_lspconfig.setup({
-  ensure_installed = {}, -- Empty list, to prevent any automatic installation
+  ensure_installed = { "zls" },
 })
 
 -- require("catppuccin").setup({
