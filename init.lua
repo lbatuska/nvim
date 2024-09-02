@@ -1,6 +1,12 @@
 -- bootstrap lazy.nvim, LazyVim and your plugins
 require("config.lazy")
 
+if vim.g.neovide == true then
+  vim.api.nvim_set_keymap("n", "<F11>", ":let g:neovide_fullscreen = !g:neovide_fullscreen<CR>", {})
+  vim.g.neovide_fullscreen = true
+  vim.g.neovide_hide_mouse_when_typing = true
+end
+
 local lspconfig = require("lspconfig")
 lspconfig.clangd.setup({
   cmd = { "/usr/sbin/clangd" },
