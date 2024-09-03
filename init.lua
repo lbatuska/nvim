@@ -16,11 +16,43 @@ lspconfig.clangd.setup({
   cmd = { "/usr/sbin/clangd" },
 })
 
+--- MASON PACKAGES ---
+
 local mason_lspconfig = require("mason-lspconfig")
 
 mason_lspconfig.setup({
-  ensure_installed = { "zls", "omnisharp", "asm_lsp" },
+  ensure_installed = { "zls", "omnisharp", "asm_lsp", "gopls" },
 })
+
+local mason_registry = require("mason-registry")
+
+local function ensure_tool_installed(tool_name)
+  if not mason_registry.is_installed(tool_name) then
+    vim.cmd("MasonInstall " .. tool_name)
+  end
+end
+
+local non_lsp_tools = {
+  "clang-format",
+  "cmakelang",
+  "cmakelint",
+  "codelldb",
+  "csharpier",
+  "delve",
+  "debugpy",
+  "sqlfluff",
+  "gofumpt",
+  "goimports",
+  "shfmt",
+  "stylua",
+  "shellcheck",
+}
+
+for _, tool in ipairs(non_lsp_tools) do
+  ensure_tool_installed(tool)
+end
+
+--- MASON PACKAGES ---
 
 -- require("catppuccin").setup({
 --   flavour = "mocha",
