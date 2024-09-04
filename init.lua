@@ -46,6 +46,8 @@ local non_lsp_tools = {
   "shfmt",
   "stylua",
   "shellcheck",
+  "neocmakelsp",
+  "htmx-lsp",
 }
 
 for _, tool in ipairs(non_lsp_tools) do
