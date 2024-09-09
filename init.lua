@@ -11,10 +11,40 @@ if vim.fn.has("win64") == 1 or vim.fn.has("win32") == 1 or vim.fn.has("win16") =
   require("nvim-treesitter.install").prefer_git = false
 end
 
+--- Find clangd
+local function file_exists(path)
+  local f = io.open(path, "r")
+  if f then
+    f:close()
+    return true
+  else
+    return false
+  end
+end
+
+local clangd_paths = {
+  "/usr/sbin/clangd",
+  "/usr/bin/clangd",
+}
+
+local clangd_cmd = nil
+for _, path in ipairs(clangd_paths) do
+  if file_exists(path) then
+    clangd_cmd = path
+    break
+  end
+end
+
 local lspconfig = require("lspconfig")
-lspconfig.clangd.setup({
-  cmd = { "/usr/sbin/clangd" },
-})
+if clangd_cmd then
+  vim.notify("Clangd found in: " .. clangd_cmd)
+  lspconfig.clangd.setup({
+    cmd = { clangd_cmd },
+  })
+else
+  vim.notify("Clangd not found in /usr/sbin or /usr/bin", vim.log.levels.WARN)
+end
+--- Find clangd
 
 --- MASON PACKAGES ---
 
