@@ -78,6 +78,7 @@ local non_lsp_tools = {
   "shellcheck",
   "neocmakelsp",
   "htmx-lsp",
+  "bash-language-server",
 }
 
 for _, tool in ipairs(non_lsp_tools) do
