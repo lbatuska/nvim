@@ -79,6 +79,12 @@ local non_lsp_tools = {
   "neocmakelsp",
   "htmx-lsp",
   "bash-language-server",
+  "ansible-language-server",
+  "yaml-language-server",
+  "yamlfix",
+  "yamlfmt",
+  "yamllint",
+  "gitlab-ci-ls",
 }
 
 for _, tool in ipairs(non_lsp_tools) do
@@ -130,3 +136,13 @@ cmp.setup({
 })
 
 vim.cmd.colorscheme("moonfly")
+
+vim.filetype.add({
+  pattern = {
+    -- ansible playbook
+    [".*/.*playbook.*.ya?ml"] = "yaml.ansible",
+    [".*/.*tasks.*/.*ya?ml"] = "yaml.ansible",
+    [".*/.*plays.*/.*ya?ml"] = "yaml.ansible",
+    [".*/ansible/.*%.ya?ml"] = "yaml.ansible",
+  },
+})
