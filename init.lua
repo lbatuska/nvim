@@ -146,3 +146,6 @@ vim.filetype.add({
     [".*/ansible/.*%.ya?ml"] = "yaml.ansible",
   },
 })
+
+vim.o.modeline = true
+vim.o.modelines = 5
