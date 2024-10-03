@@ -149,3 +149,10 @@ vim.filetype.add({
 
 vim.o.modeline = true
 vim.o.modelines = 5
+
+if vim.fn.getenv("TMUX") ~= vim.NIL then
+  -- We're in a TMUX session, configure TMUX
+  vim.fn.system("tmux unbind -a") -- Unbind all keys
+  vim.fn.system("tmux set-option -g prefix None") -- Disable the TMUX prefix
+  vim.fn.system("tmux bind-key -n C-q detach") -- Bind Ctrl-q to detach from TMUX
+end
