@@ -135,6 +135,14 @@ cmp.setup({
   },
 })
 
+cmp.setup.filetype("zig", {
+  sources = cmp.config.sources({
+    { name = "nvim_lsp" },
+    { name = "buffer" },
+    { name = "path" },
+  }),
+})
+
 vim.cmd.colorscheme("moonfly")
 
 vim.filetype.add({
