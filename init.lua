@@ -86,6 +86,7 @@ local non_lsp_tools = {
   "yamllint",
   "gitlab-ci-ls",
   "autotools-language-server",
+  "perlnavigator",
 }
 
 for _, tool in ipairs(non_lsp_tools) do
