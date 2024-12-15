@@ -7,6 +7,7 @@ if vim.g.neovide == true then
   vim.g.neovide_hide_mouse_when_typing = true
 end
 
+-- WSL2 won't work with git for some reason
 if vim.fn.has("win64") == 1 or vim.fn.has("win32") == 1 or vim.fn.has("win16") == 1 then
   require("nvim-treesitter.install").prefer_git = false
 end
@@ -87,6 +88,7 @@ local non_lsp_tools = {
   "gitlab-ci-ls",
   "autotools-language-server",
   "perlnavigator",
+  "cmake-language-server",
 }
 
 for _, tool in ipairs(non_lsp_tools) do
@@ -116,14 +118,17 @@ vim.opt.fillchars = {
 }
 
 vim.g.moonflyNormalFloat = true
+-- Add a single line border to improve the visual experience
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
   border = "single",
 })
+
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signatureHelp, {
   border = "single",
 })
-vim.diagnostic.config({ float = { border = "single" } })
 
+vim.diagnostic.config({ float = { border = "single" } })
+-- consistent highlight groups for floating windows
 local winhighlight = {
   winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel",
 }
@@ -137,15 +142,16 @@ cmp.setup({
   },
 })
 
-cmp.setup.filetype("zig", {
-  sources = cmp.config.sources({
-    { name = "nvim_lsp" },
-    { name = "buffer" },
-    { name = "path" },
-  }),
-})
-
 vim.cmd.colorscheme("moonfly")
+
+-- There were some errors using zig before LazyExtras added it, uncomment if lsp you get completion errors when coding or no completion
+-- cmp.setup.filetype("zig", {
+--   sources = cmp.config.sources({
+--     { name = "nvim_lsp" },
+--     { name = "buffer" },
+--     { name = "path" },
+--   }),
+-- })
 
 vim.filetype.add({
   pattern = {
