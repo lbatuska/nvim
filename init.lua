@@ -89,6 +89,7 @@ local non_lsp_tools = {
   "autotools-language-server",
   "perlnavigator",
   "cmake-language-server",
+  "asmfmt",
 }
 
 for _, tool in ipairs(non_lsp_tools) do
