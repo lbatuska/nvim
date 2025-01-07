@@ -12,6 +12,8 @@ if vim.fn.has("win64") == 1 or vim.fn.has("win32") == 1 or vim.fn.has("win16") =
   require("nvim-treesitter.install").prefer_git = false
 end
 
+vim.opt.colorcolumn = { 80, 100 }
+
 --- Find clangd
 local function file_exists(path)
   local f = io.open(path, "r")
