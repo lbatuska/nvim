@@ -54,7 +54,7 @@ end
 local mason_lspconfig = require("mason-lspconfig")
 
 mason_lspconfig.setup({
-  ensure_installed = { "zls", "omnisharp", "asm_lsp", "gopls" },
+  ensure_installed = { "zls", "omnisharp", "asm_lsp", "gopls", "pyright", "ruff" },
 })
 
 local mason_registry = require("mason-registry")
