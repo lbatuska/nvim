@@ -92,6 +92,8 @@ local non_lsp_tools = {
   "perlnavigator",
   "cmake-language-server",
   "asmfmt",
+  "html-lsp",
+  "jinja-lsp",
 }
 
 for _, tool in ipairs(non_lsp_tools) do
