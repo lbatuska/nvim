@@ -176,6 +176,7 @@ if vim.fn.getenv("TMUX") ~= vim.NIL then
   vim.fn.system("tmux unbind -a") -- Unbind all keys
   vim.fn.system("tmux set-option -g prefix None") -- Disable the TMUX prefix
   vim.fn.system("tmux bind-key -n C-q detach") -- Bind Ctrl-q to detach from TMUX
+  vim.fn.system("tmux set -g mouse on")
 end
 
 vim.api.nvim_set_keymap("t", "<Esc>", [[<C-\><C-n>]], { noremap = true, silent = true })
