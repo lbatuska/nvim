@@ -66,7 +66,7 @@ local function ensure_tool_installed(tool_name)
 end
 
 local non_lsp_tools = {
-  "clang-format",
+  "clang-format", -- 19.1.7  clangd -- 19.1.2
   "cmakelang",
   "cmakelint",
   "codelldb",
@@ -157,6 +157,20 @@ vim.cmd.colorscheme("moonfly")
 --     { name = "path" },
 --   }),
 -- })
+
+local conform = require("conform")
+conform.setup({
+  formatters_by_ft = {
+    c = { "clang_format" },
+    cpp = { "clang_format" },
+    -- Add more filetypes as needed
+  },
+  formatters = {
+    clang_format = {
+      prepend_args = { "--style=Google" },
+    },
+  },
+})
 
 vim.filetype.add({
   pattern = {
