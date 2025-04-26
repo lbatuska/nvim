@@ -60,6 +60,8 @@ else
 end
 --- Find clangd
 
+lspconfig.postgres_lsp.setup({})
+
 --- MASON PACKAGES ---
 
 local mason_lspconfig = require("mason-lspconfig")
