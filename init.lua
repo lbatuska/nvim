@@ -68,6 +68,7 @@ local mason_lspconfig = require("mason-lspconfig")
 
 mason_lspconfig.setup({
   ensure_installed = { "zls", "omnisharp", "asm_lsp", "gopls", "pyright", "ruff" },
+  automatic_installation = true,
 })
 
 local mason_registry = require("mason-registry")
@@ -107,6 +108,7 @@ local non_lsp_tools = {
   "asmfmt",
   "html-lsp",
   "jinja-lsp",
+  "postgrestools",
 }
 
 for _, tool in ipairs(non_lsp_tools) do
