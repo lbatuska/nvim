@@ -53,7 +53,17 @@ local lspconfig = require("lspconfig")
 if clangd_cmd then
   vim.notify("Clangd found in: " .. clangd_cmd)
   lspconfig.clangd.setup({
-    cmd = { clangd_cmd },
+    cmd = {
+      clangd_cmd,
+      "--background-index",
+      "--clang-tidy",
+      "--enable-config",
+      "--header-insertion=iwyu",
+      "--completion-style=detailed",
+      "--function-arg-placeholders",
+      "--fallback-style=google",
+      "--clang-tidy-checks=modernize-*,-modernize-use-trailing-return-type",
+    },
   })
 else
   vim.notify("Clangd not found in /usr/sbin or /usr/bin", vim.log.levels.WARN)
@@ -173,19 +183,20 @@ vim.cmd.colorscheme("moonfly")
 --   }),
 -- })
 
-local conform = require("conform")
-conform.setup({
-  formatters_by_ft = {
-    c = { "clang_format" },
-    cpp = { "clang_format" },
-    -- Add more filetypes as needed
-  },
-  formatters = {
-    clang_format = {
-      prepend_args = { "--style=Google" },
-    },
-  },
-})
+-- Seems to break .clang-format files
+-- local conform = require("conform")
+-- conform.setup({
+--   formatters_by_ft = {
+--     c = { "clang_format" },
+--     cpp = { "clang_format" },
+--     -- Add more filetypes as needed
+--   },
+--   formatters = {
+--     clang_format = {
+--       prepend_args = { "--style=Google" },
+--     },
+--   },
+-- })
 
 vim.filetype.add({
   pattern = {
