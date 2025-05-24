@@ -119,6 +119,7 @@ local non_lsp_tools = {
   "html-lsp",
   "jinja-lsp",
   "postgrestools",
+  "cpplint",
 }
 
 for _, tool in ipairs(non_lsp_tools) do
