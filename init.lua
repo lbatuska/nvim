@@ -77,7 +77,7 @@ lspconfig.postgres_lsp.setup({})
 local mason_lspconfig = require("mason-lspconfig")
 
 mason_lspconfig.setup({
-  ensure_installed = { "zls", "omnisharp", "asm_lsp", "gopls", "pyright", "ruff" },
+  ensure_installed = { "zls", "omnisharp", "asm_lsp", "gopls", "ruff" },
   automatic_installation = true,
 })
 
@@ -105,18 +105,13 @@ local non_lsp_tools = {
   "shellcheck",
   "neocmakelsp",
   "htmx-lsp",
-  "bash-language-server",
-  "ansible-language-server",
-  "yaml-language-server",
   "yamlfix",
   "yamlfmt",
   "yamllint",
   "gitlab-ci-ls",
   "autotools-language-server",
-  "perlnavigator",
   "cmake-language-server",
   "asmfmt",
-  "html-lsp",
   "jinja-lsp",
   "postgrestools",
   "cpplint",
