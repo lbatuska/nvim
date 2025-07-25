@@ -3,7 +3,7 @@ require("config.lazy")
 
 if vim.g.neovide == true then
   vim.api.nvim_set_keymap("n", "<F11>", ":let g:neovide_fullscreen = !g:neovide_fullscreen<CR>", {})
-  vim.g.neovide_fullscreen = true
+  -- vim.g.neovide_fullscreen = true
   vim.g.neovide_hide_mouse_when_typing = true
 
   vim.g.neovide_scale_factor = 1.0
