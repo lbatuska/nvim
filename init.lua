@@ -41,11 +41,15 @@ local clangd_paths = {
   "/usr/bin/clangd",
 }
 
-local clangd_cmd = nil
-for _, path in ipairs(clangd_paths) do
-  if file_exists(path) then
-    clangd_cmd = path
-    break
+-- local clangd_cmd = nil
+local clangd_cmd = vim.fn.stdpath("data") .. "/mason/bin/clangd"
+
+if not vim.fn.executable(clangd_cmd) then
+  for _, path in ipairs(clangd_paths) do
+    if file_exists(path) then
+      clangd_cmd = path
+      break
+    end
   end
 end
 
