@@ -53,10 +53,9 @@ if not vim.fn.executable(clangd_cmd) then
   end
 end
 
-local lspconfig = require("lspconfig")
 if clangd_cmd then
   vim.notify("Clangd found in: " .. clangd_cmd)
-  lspconfig.clangd.setup({
+  vim.lsp.config("clangd", {
     cmd = {
       clangd_cmd,
       "--background-index",
@@ -69,12 +68,14 @@ if clangd_cmd then
       "--clang-tidy-checks=modernize-*,-modernize-use-trailing-return-type",
     },
   })
+  vim.lsp.enable("clangd")
 else
-  vim.notify("Clangd not found in /usr/sbin or /usr/bin", vim.log.levels.WARN)
+  vim.notify("Clangd not found in mason, /usr/sbin, or /usr/bin", vim.log.levels.WARN)
 end
+
 --- Find clangd
 
-lspconfig.postgres_lsp.setup({})
+vim.lsp.enable("postgres_lsp")
 
 --- MASON PACKAGES ---
 
