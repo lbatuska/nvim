@@ -75,8 +75,6 @@ end
 
 --- Find clangd
 
-vim.lsp.enable("postgres_lsp")
-
 --- MASON PACKAGES ---
 
 local mason_lspconfig = require("mason-lspconfig")
@@ -118,7 +116,7 @@ local non_lsp_tools = {
   "cmake-language-server",
   "asmfmt",
   "jinja-lsp",
-  "postgrestools",
+  "postgres-language-server",
   "cpplint",
 }
 
