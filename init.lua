@@ -126,11 +126,6 @@ end
 
 --- MASON PACKAGES ---
 
--- require("catppuccin").setup({
---   flavour = "mocha",
--- })
--- vim.cmd.colorscheme("catppuccin")
-
 vim.g.moonflyCursorColor = true
 vim.g.moonflyItalics = false
 vim.g.moonflyVirtualTextColor = true
@@ -147,14 +142,10 @@ vim.opt.fillchars = {
 }
 
 vim.g.moonflyNormalFloat = true
--- Add a single line border to improve the visual experience
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-  border = "single",
-})
 
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signatureHelp, {
-  border = "single",
-})
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.config("textDocument/hover", { border = "single" })
+
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.config("textDocument/signatureHelp", { border = "single" })
 
 vim.diagnostic.config({ float = { border = "single" } })
 -- consistent highlight groups for floating windows
@@ -173,14 +164,7 @@ cmp.setup({
 
 vim.cmd.colorscheme("moonfly")
 
--- There were some errors using zig before LazyExtras added it, uncomment if lsp you get completion errors when coding or no completion
--- cmp.setup.filetype("zig", {
---   sources = cmp.config.sources({
---     { name = "nvim_lsp" },
---     { name = "buffer" },
---     { name = "path" },
---   }),
--- })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#1c1c1c" })
 
 -- Seems to break .clang-format files
 -- local conform = require("conform")
