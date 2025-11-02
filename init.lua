@@ -166,21 +166,6 @@ vim.cmd.colorscheme("moonfly")
 
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#1c1c1c" })
 
--- Seems to break .clang-format files
--- local conform = require("conform")
--- conform.setup({
---   formatters_by_ft = {
---     c = { "clang_format" },
---     cpp = { "clang_format" },
---     -- Add more filetypes as needed
---   },
---   formatters = {
---     clang_format = {
---       prepend_args = { "--style=Google" },
---     },
---   },
--- })
-
 vim.filetype.add({
   pattern = {
     -- ansible playbook

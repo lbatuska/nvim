@@ -4,14 +4,12 @@ return {
   config = function()
     local lint = require("lint")
 
-    -- Assign linters to filetypes
     lint.linters_by_ft = {
       cpp = { "cpplint" },
       c = { "cpplint" },
       sql = { "sqlfluff" },
     }
 
-    -- Configure sqlfluff manually (optional, if Mason already handles it fine)
     lint.linters.sqlfluff = {
       name = "sqlfluff",
       cmd = "sqlfluff",
@@ -26,7 +24,6 @@ return {
       parser = require("lint.parser").from_errorformat("%f:%l:%c: %m", {}),
     }
 
-    -- Optional: Configure cpplint (if not auto-detected correctly)
     lint.linters.cpplint = {
       name = "cpplint",
       cmd = "cpplint",
@@ -48,18 +45,3 @@ return {
     })
   end,
 }
-
--- return {
---   "mfussenegger/nvim-lint",
---   opts = {
---     linters = {
---       sqlfluff = {
---         args = {
---           "lint",
---           "--format=json",
---           "--dialect=postgres",
---         },
---       },
---     },
---   },
--- }
