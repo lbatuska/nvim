@@ -126,45 +126,64 @@ end
 
 --- MASON PACKAGES ---
 
-vim.g.moonflyCursorColor = true
-vim.g.moonflyItalics = false
-vim.g.moonflyVirtualTextColor = true
-vim.g.moonflyWinSeparator = 2
-vim.opt.fillchars = {
-  horiz = "━",
-  horizup = "┻",
-  horizdown = "┳",
-  vert = "┃",
-  vertleft = "┫",
-  vertright = "┣",
-  verthoriz = "╋",
-  eob = " ",
-}
+-- vim.g.moonflyCursorColor = true
+-- vim.g.moonflyItalics = false
+-- vim.g.moonflyVirtualTextColor = true
+-- vim.g.moonflyWinSeparator = 2
+-- vim.opt.fillchars = {
+--   horiz = "━",
+--   horizup = "┻",
+--   horizdown = "┳",
+--   vert = "┃",
+--   vertleft = "┫",
+--   vertright = "┣",
+--   verthoriz = "╋",
+--   eob = " ",
+-- }
+--
+-- vim.g.moonflyNormalFloat = true
+--
+-- vim.lsp.handlers["textDocument/hover"] = vim.lsp.config("textDocument/hover", { border = "single" })
+--
+-- vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.config("textDocument/signatureHelp", { border = "single" })
+--
+-- vim.diagnostic.config({ float = { border = "single" } })
+-- -- consistent highlight groups for floating windows
+-- local winhighlight = {
+--   winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel",
+-- }
+--
+-- local cmp = require("cmp")
+--
+-- cmp.setup({
+--   window = {
+--     completion = cmp.config.window.bordered(winhighlight),
+--     documentation = cmp.config.window.bordered(winhighlight),
+--   },
+-- })
+--
+-- vim.cmd.colorscheme("moonfly")
 
-vim.g.moonflyNormalFloat = true
+-- vim.cmd.colorscheme("no-clown-fiesta")
+-- vim.cmd.colorscheme("lackluster-hack")
 
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.config("textDocument/hover", { border = "single" })
+vim.opt.termguicolors = true
+vim.opt.background = "dark"
 
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.config("textDocument/signatureHelp", { border = "single" })
+-- vim.cmd.colorscheme("monochrome")
 
-vim.diagnostic.config({ float = { border = "single" } })
--- consistent highlight groups for floating windows
-local winhighlight = {
-  winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel",
-}
+vim.cmd.colorscheme("alabaster")
+vim.api.nvim_set_hl(0, "@variable", { link = "Identifier" })
+vim.api.nvim_set_hl(0, "@function", { link = "Function" })
+vim.api.nvim_set_hl(0, "@type", { link = "Type" })
+vim.api.nvim_set_hl(0, "@keyword", { link = "Keyword" })
+vim.api.nvim_set_hl(0, "@comment", { link = "Comment" })
 
-local cmp = require("cmp")
+vim.api.nvim_set_hl(0, "Normal", { bg = "#000000", fg = "#dcdcdc" })
+vim.api.nvim_set_hl(0, "Comment", { fg = "#707070", italic = true })
+vim.api.nvim_set_hl(0, "String", { fg = "#b0b0b0" })
 
-cmp.setup({
-  window = {
-    completion = cmp.config.window.bordered(winhighlight),
-    documentation = cmp.config.window.bordered(winhighlight),
-  },
-})
-
-vim.cmd.colorscheme("moonfly")
-
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#1c1c1c" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#3a3a3a" })
 
 vim.filetype.add({
   pattern = {
