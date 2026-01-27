@@ -118,6 +118,7 @@ local non_lsp_tools = {
   "jinja-lsp",
   "postgres-language-server",
   "cpplint",
+  "docker-language-server",
 }
 
 for _, tool in ipairs(non_lsp_tools) do
