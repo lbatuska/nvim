@@ -75,6 +75,27 @@ end
 
 --- Find clangd
 
+local cmake_ls_cmd = (function()
+  local mason_cmd = vim.fn.stdpath("data") .. "/mason/bin/cmake-language-server"
+  if vim.fn.executable(mason_cmd) == 1 then
+    return mason_cmd
+  elseif vim.fn.executable("/usr/bin/cmake-language-server") == 1 then
+    return "/usr/bin/cmake-language-server"
+  elseif vim.fn.executable("cmake-language-server") == 1 then
+    return "cmake-language-server"
+  else
+    return nil
+  end
+end)()
+
+if cmake_ls_cmd == nil then
+  vim.notify("cmake-language-server not found (checked mason and /usr/bin)", vim.log.levels.WARN)
+else
+  vim.notify("cmake-language-server found in: " .. cmake_ls_cmd, vim.log.levels.INFO)
+  vim.lsp.config("cmake-language-server", { cmd = { cmake_ls_cmd }, filetypes = { "cmake" } })
+  vim.lsp.enable("cmake-language-server")
+end
+
 --- MASON PACKAGES ---
 
 local mason_lspconfig = require("mason-lspconfig")
@@ -113,7 +134,6 @@ local non_lsp_tools = {
   "yamllint",
   "gitlab-ci-ls",
   "autotools-language-server",
-  "cmake-language-server",
   "asmfmt",
   "jinja-lsp",
   "postgres-language-server",
