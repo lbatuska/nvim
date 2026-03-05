@@ -53,9 +53,22 @@ return {
         injected = { options = { ignore_errors = true } },
         clang_format = {
           command = vim.fn.exepath("clang-format"), -- use Mason-installed binary
-          prepend_args = {
-            "--style=file:" .. vim.fn.expand("$HOME/.config/nvim/.clang-format"),
-          },
+          -- prepend_args = {
+          --   "--style=file:" .. vim.fn.expand("$HOME/.config/nvim/.clang-format"),
+          -- },
+          prepend_args = function(self, ctx)
+            local root = vim.fs.root(ctx.filename, { ".clang-format", "_clang-format", ".git" })
+
+            -- if project has a clang-format, use clang's normal lookup
+            if root and vim.loop.fs_stat(root .. "/.clang-format") then
+              return { "--style=file" }
+            end
+
+            -- otherwise use your personal config
+            return {
+              "--style=file:" .. vim.fn.expand("$HOME/.config/nvim/.clang-format"),
+            }
+          end,
         },
       },
     }
