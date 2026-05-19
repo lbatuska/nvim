@@ -81,6 +81,8 @@ local cmake_ls_cmd = (function()
     return mason_cmd
   elseif vim.fn.executable("/usr/bin/cmake-language-server") == 1 then
     return "/usr/bin/cmake-language-server"
+  elseif vim.fn.executable(vim.env.HOME .. "/.local/bin/cmake-language-server") == 1 then
+    return vim.env.HOME .. "/.local/bin/cmake-language-server"
   elseif vim.fn.executable("cmake-language-server") == 1 then
     return "cmake-language-server"
   else
