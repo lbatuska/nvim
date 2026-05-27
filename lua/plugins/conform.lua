@@ -48,9 +48,12 @@ return {
         c = { "clang_format" },
         cpp = { "clang_format" },
         h = { "clang_format" },
+        go = { "goimports", "gofumpt" },
+        cmake = { "cmake_format" },
       },
       formatters = {
         injected = { options = { ignore_errors = true } },
+        golines = { args = { "-m", "120" } },
         clang_format = {
           command = vim.fn.exepath("clang-format"), -- use Mason-installed binary
           -- prepend_args = {
